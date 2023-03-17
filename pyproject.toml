@@ -1,0 +1,9 @@
+# Copyright 2023 Jesse Windle                                                                                     
+
+# Use of this source code is governed by an MIT-style license that can
+# be found in the LICENSE file.
+
+
+[build-system]
+requires = ["setuptools>=42", "wheel"]   
+build-backend = "setuptools.build_meta"
