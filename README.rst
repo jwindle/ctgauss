@@ -34,11 +34,16 @@ structure is isotropic or anisotropic.  Those are
 Both of these using the same parameters to define the function
 `\ell(x)`.
 
-
 Defining `\ell(x)`
-------------------------
+------------------
 
-One defines the regions of `\ell(x)` using the following:
+There are two parts to defining `\ell(x)`, defining the regions and
+defining the subspace within each region.
+
+Defining the regions
+^^^^^^^^^^^^^^^^^^^^
+
+The regions are defined using
 
 - (m, n) array `F`
 - (m, 1) or (m,) array `g`
@@ -61,14 +66,31 @@ The jth row of `L` defines how to construct the jth region, for
   = j`, otherwise it passes through the hyperplane innto region
   `|L_{ji}|`.
 
-  
+Defining the subspaces
+^^^^^^^^^^^^^^^^^^^^^^
+
+The subspaces are defined using
+
+- (J, n, d) array or a list of J (n, d) arrays `A`
+- (J, d) array or a list of (d,1) or (d,) arrays `y`
+
+For the `j` th region, the subspace is :math::
+
+  A[j]'x + y = 0
 
 
+Gaussian parameters
+-------------------
 
-Implementation Details
-======================
+In the isotropic case, the parameters are
 
+- The mean `\mu` as an (n,1) or (n,) array
+- The precision `\phi` as a scalar
 
+In the anisotropic case, the parameters are given by
+
+- The mean `\mu` as an (n,1) or (n,) array
+- The precision `M` as a (n, n) array
 
 
 
