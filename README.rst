@@ -57,7 +57,8 @@ The jth row of `L` defines how to construct the jth region, for
 
 - The `i` th hyperplane is used (is active) in constructing the jth
   region if `L_{ji} \neq 0`.
-- The jth region is defined by :math::
+- The jth region is defined by
+  .. math::
     \textmd{sign}(L_{ji}) (f_i' x + g) \geq 0
   for active `i`.
 - If a particle in region `j` encounters the `i` th hyperplane, the
@@ -74,7 +75,8 @@ The subspaces are defined using
 - (J, n, d) array or a list of J (n, d) arrays `A`
 - (J, d) array or a list of (d,1) or (d,) arrays `y`
 
-For the `j` th region, the subspace is :math::
+For the `j` th region, the subspace is
+.. math::
 
   A[j]'x + y = 0
 
@@ -93,7 +95,28 @@ In the anisotropic case, the parameters are given by
 - The precision `M` as a (n, n) array
 
 
+Example
+=======
+
+After defining the function `\ell` via the parameters describe above,
+you can generate samples by using the :code:`sample` function.  E.g.::
+
+  import numpy as np
+  from ctgauss import IsotropicCTGauss
+
+  # ... Define A, y, F, g, L ...
+  
+  rng = np.default_rng()
+  N = 1000                       # Draw 1000 samples
+  t_max = np.pi / 2              # Travel pi/2 before resampling momentum
+
+  # Make sure these values correspond to your \ell!!!
+  x0 = np.array([1., 0., 0.])    # The starting point
+  x0dot = np.array([0., 1., 0.]) # The staring velocity
+  reg = 1                        # The starting region
+
+  ictg = IsotropicCTGauss(phi, mu, A, y, F, g, L)
+  (X, Xdot, R) = ictg.sample(rng, N, t_max, reg, x0, x0dot)
 
 
-
-
+More specific examples can be found in the :code:`notebooks` directory.
