@@ -29,7 +29,7 @@ class IsotropicCTGauss(CTGaussBase):
         R1 = R[0:d,:]
         Q2 = Q[:,d: ]
         S = Q2 / np.sqrt(self.phi)
-        z1 = sp.linalg.solve_triangular(R1, self.y[j], trans=1, lower=False) # A'x - y
+        z1 = sp.linalg.solve_triangular(R1, -self.y[j], trans=1, lower=False) # A'x + y
         x1 = np.matmul(Q1, z1)
         rtil = self.phi * (self.mu - x1)
         xp = np.matmul(S, np.matmul(S.T, rtil)) + x1

@@ -23,9 +23,9 @@ def continuity_error(f, g, A1, A2, y1, y2):
     Q1 = Q[:,0:d]
     Q0 = Q[:,d: ]
     R1 = R[0:d,:]
-    z1 = sp.linalg.solve_triangular(R1, b1, trans=1, lower=False) # A'x - y
+    z1 = sp.linalg.solve_triangular(R1, -b1, trans=1, lower=False) # A'x + y
     A2p = np.transpose(A2)
-    e1 = np.matmul(A2p, np.matmul(Q1, z1)) - y2 # d x 1 # A'x - y
+    e1 = np.matmul(A2p, np.matmul(Q1, z1)) + y2 # d x 1 # A'x + y
     e2 = np.matmul(A2p, Q0)                     # d x (n-d)
     ep1 = np.linalg.norm(e1) / np.sqrt(d)
     ep2 = np.linalg.norm(e2) / np.sqrt((n-d)*d)
@@ -38,7 +38,7 @@ def subspace_error(xp, x, xdot, Q, S, A, y):
         xpab = np.vstack([xp, x, xdot]).T
         x_all = np.hstack([xpab, Q, S])
         diffs = dict(
-            xp = np.matmul(A.T, xp) - y, # A'x - y
+            xp = np.matmul(A.T, xp) + y, # A'x + y
             x = np.matmul(A.T, x),
             xdot = np.matmul(A.T, xdot),
             Q = np.matmul(A.T, Q),
@@ -57,7 +57,7 @@ def region_error(x, F, g, A, y):
     ep1 = np.sum(np.abs(e1))
     ep2 = 0.0
     if not ((A is None) or (len(A) == 0)):
-        e2 = np.matmul(A.T, x) - y # A'x - y
+        e2 = np.matmul(A.T, x) + y # A'x + y
         ep2 = np.sum(np.abs(e2))
     return (ep1, ep2)
 

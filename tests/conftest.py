@@ -24,7 +24,7 @@ def fullspace_3d_param():
     A = [A1, A2]
     y1 = np.array([0])
     y2 = np.array([0])
-    y = [y1, y2]
+    y = [-y1, -y2]
     param = (A, y, F, g, L)
     return param
 
@@ -44,7 +44,7 @@ def halfspace_3d_param():
     A = [A1, A2]
     y1 = np.array([0])
     y2 = np.array([0])
-    y = [y1, y2]
+    y = [-y1, -y2]
     param = (A, y, F, g, L)
     return param
 
@@ -64,7 +64,7 @@ def halfspace_3d_param_as_array():
     A = np.stack([A1, A2])
     y1 = np.array([0])
     y2 = np.array([0])
-    y = np.stack([y1, y2])
+    y = np.stack([-y1, -y2])
     param = (A, y, F, g, L)
     return param
 
