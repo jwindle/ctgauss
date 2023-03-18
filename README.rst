@@ -18,7 +18,7 @@ This software can sample from these sorts of distributions.  It uses
 Hamilton Monte Carlo (HMC).
 
 Please note though, that the excellent HMC software
-[Stan](https://mc-stan.org/) can often sample from a nearly identical
+:ref:`Stan <https://mc-stan.org/>` can often sample from a nearly identical
 distribution - so long as `\ell(x)` is not too complicated - by
 insisting that `|\ell(x)| < \varepsilon`.  In other words, you
 should check out Stan to see if you use-case fits there before
@@ -58,8 +58,10 @@ The jth row of `L` defines how to construct the jth region, for
 - The `i` th hyperplane is used (is active) in constructing the jth
   region if `L_{ji} \neq 0`.
 - The jth region is defined by
+
   .. math::
     \textmd{sign}(L_{ji}) (f_i' x + g) \geq 0
+    
   for active `i`.
 - If a particle in region `j` encounters the `i` th hyperplane, the
   magnitude of `L_{ji}` determines to which region it transitions.  In
@@ -73,12 +75,13 @@ Defining the subspaces
 The subspaces are defined using
 
 - (J, n, d) array or a list of J (n, d) arrays `A`
-- (J, d) array or a list of (d,1) or (d,) arrays `y`
+- (J, d) array or a list of J (d,1) or (d,) arrays `y`
 
 For the `j` th region, the subspace is
-.. math::
 
-  A[j]'x + y = 0
+.. math::
+  
+  A[j]'x + y[j] = 0
 
 
 Gaussian parameters
