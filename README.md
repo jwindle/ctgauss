@@ -1,6 +1,5 @@
 
-Introduction
-============
+# Introduction
 
 Our motivation comes from a question that arose when modeling dicot
 (e.g. maize) root growth in a piecewise linear fashion and inferring
@@ -24,8 +23,7 @@ check out Stan to see if you use-case fits there before diving into
 this software.
 
 
-Parameterization
-================
+# Parameterization
 
 There are two classes of main interest depending on if the covariance
 structure is isotropic or anisotropic.  Those are
@@ -33,14 +31,14 @@ structure is isotropic or anisotropic.  Those are
 Both of these using the same parameters to define the function
 $\ell(x)$.
 
-Defining $\ell(x)$
-------------------
+
+## Defining $\ell(x)$
 
 There are two parts to defining $\ell(x)$, defining the regions and
 defining the subspace within each region.
 
-Defining the regions
-^^^^^^^^^^^^^^^^^^^^
+
+### Defining the regions
 
 The regions are defined using
 
@@ -66,8 +64,8 @@ $j = 1, \ldots, J$.  The rules are
   = j$, otherwise it passes through the hyperplane innto region
   $|L_{ji}|$.
 
-Defining the subspaces
-^^^^^^^^^^^^^^^^^^^^^^
+
+### Defining the subspaces
 
 The subspaces are defined using
 
@@ -78,8 +76,7 @@ For the $j$ th region, the subspace is
 $$ A[j]'x + y[j] = 0. $$
 
 
-Gaussian parameters
--------------------
+## Gaussian parameters
 
 In the isotropic case, the parameters are
 
@@ -92,8 +89,7 @@ In the anisotropic case, the parameters are given by
 - The precision $M$ as a (n, n) array
 
 
-Example
-=======
+# Example
 
 After defining the function $\ell$ via the parameters describe above,
 you can generate samples by using the `sample` function.  E.g.:
