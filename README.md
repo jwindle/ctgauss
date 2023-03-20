@@ -72,8 +72,7 @@ The subspaces are defined using
 - (J, n, d) array or a list of J (n, d) arrays $A$
 - (J, d) array or a list of J (d,1) or (d,) arrays $y$
 
-For the $j$ th region, the subspace is
-$$ A[j]'x + y[j] = 0. $$
+For the $j$ th region, the subspace is $$A[j]'x + y[j] = 0.$$
 
 
 ## Gaussian parameters
