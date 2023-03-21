@@ -28,10 +28,11 @@ class AnisotropicCTGauss(CTGaussBase):
         Q2 = Q[:,d: ]
         Om22 = np.matmul(np.matmul(Q2.T, self.M), Q2)
         U = sp.linalg.cholesky(Om22, lower=False)
-        Sp = sp.linalg.solve_triangular(U, Q2.T, trans=0, lower=False)
+        Sp = sp.linalg.solve_triangular(U, Q2.T, trans=1, lower=False)
         z1 = sp.linalg.solve_triangular(R1, -self.y[j], trans=1, lower=False) # A'x + y
         x1 = np.matmul(Q1, z1)
         rtil = self.r - np.matmul(self.M, x1)
+        offset = np.matmul(Sp.T, np.matmul(Sp, rtil))
         xp = np.matmul(Sp.T, np.matmul(Sp, rtil)) + x1
         S = np.transpose(Sp)
         return (xp, Q, S)
