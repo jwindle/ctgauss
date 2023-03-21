@@ -26,8 +26,12 @@ this software.
 # Example
 
 For instance, this software allows us to sample from 
-$$X \sim (N(0, D) | \|X\|_1= 1)$$ 
-as seen below.
+
+$$X \sim (N(0, D) \; | \; ||X||_1= 1)$$ 
+
+as seen below.  We are not restricted to diagonal $D$ and can use arbitrary
+covariance structures.  (Actually, we can use piecewise quadratic
+log-densities.)
 
 ![Sampling conditional on lying on the one-norm](onenorm-example.png)
 
