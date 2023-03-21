@@ -23,6 +23,14 @@ check out Stan to see if you use-case fits there before diving into
 this software.
 
 
+# Example
+
+For instance, this software allows to sample from 
+$$X \sim (N(0, D) | \|X\|_1 = 1)$$ as seen below.
+
+![Sampling conditional on lying on the one-norm](onenorm-example.png){ width=50% }
+
+
 # Parameterization
 
 There are two classes of main interest depending on if the covariance
